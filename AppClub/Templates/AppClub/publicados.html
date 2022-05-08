@@ -1,0 +1,62 @@
+{% extends 'AppClub/base.html' %}
+
+
+{% block header %}
+<br><br><br><br><br>  {% if posts %}</br></br></br></br></br>
+                  <h1 class="text-white">{{Posteos_nuevos.count}}</h1>   <span class="subheading">Mira los posts publicados</span>
+                  {% else %}
+            
+                <span class="subheading">No hay posteos aún...</span>
+             
+                {% endif %}
+              </div>
+            </div>
+      </div>
+  </div>
+</header>
+{% endblock header %}
+
+
+{% block contenido_principal %}
+
+{% if Posteos_nuevos is empty %}
+{% else %}
+<form action="" method="get">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          name="buscar"
+          placeholder="Buscar post..."
+        />
+        <span class="input-group-btn">
+          <button class="btn btn-primary ms-3" type="submit">Buscar</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</form>
+  {% endif %}
+
+{% for post in posts %}
+
+<div class="text-center border-top mt-3">
+  <span class="fs-6 text-success fst-italic">{{post.fecha}}</span> 
+  <h2 style="word-break: break-word   background: rgb(149,0,255);
+    -moz-text-fill-color: transparent;" class=" mb-0">{{post.titulo|safe}}</h2>
+  <p class="m-0" style="color: rgb(38,144,139);">{{post.autor}}</p>
+  <img src="{{post.img.url}}" style="margin-top:2rem;width:150px; height:150px; border: rgb(38,144,139) 2px solid" class="rounded-circle"  alt="Responsive image">
+  <p style="word-break: break-word; overflow: hidden;  " class="text-start">{{ post.post|safe|slice:"800" }}</p>
+  <p class="text-center">
+    <small>
+      <a class="text-danger" style="font-weight:bold " href="{{post.id}}/">Seguir leyendo</i>
+        ></a>
+    </small>
+  </p>
+</div>
+
+{% endfor %} 
+   
+{% endblock contenido_principal %}

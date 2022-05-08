@@ -1,0 +1,11 @@
+{% extends 'AppClub/base.html' %}
+
+{% block contenido_principal %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br><br><br><br><br>{{ form.as_p }} </br></br></br></br></br>
+    <input type="submit" value="Cargar" class="btn btn-primary">
+</form>
+
+{% endblock contenido_principal %}

@@ -1,0 +1,24 @@
+{% extends 'AppClub/base.html' %}
+
+    {% load static %}
+    
+    {% block contenido_principal %}
+    <form style="margin:auto; text-align:center; justify-content:center; font-weight:bold"  method="POST">
+        {% csrf_token %}
+
+        <br><br><br><br><br><br>{{form.as_p}}</br></br></br></br></br></br>
+        <button class="btn btn-outline-light me-3" type="">  <a href="{% url 'inicio' %}">
+     
+            Ir a inicio
+          </a></button>
+        <button class="btn btn-primary" type="submit">Iniciar sesion</button>
+        
+
+    </form>
+    
+    <p style="color:red; font-weight: bold">{{mensaje}}</p>
+    
+</body>
+</html>
+
+{% endblock contenido_principal %}

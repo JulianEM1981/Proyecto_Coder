@@ -1,0 +1,88 @@
+{% extends 'AppClub/base.html' %}
+
+{% load static %}
+
+
+{% block header%}
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container px-5">
+            <h1 class="masthead-heading mb-0">Villa del Parque Juniors</h1>
+            <h2 class="masthead-subheading mb-0">Club Social y Deportivo</h2>
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'sobremi' %}">Conocenos</a>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+{% endblock header%}
+    
+
+{% block contenido_principal %}
+
+        <!-- Content section 1-->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'AppClub/assets/img/01.png' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Un espacio para toda la familia</h2>
+                            <p>Nuestro club te ofrece los mejores servicios para que puedas disfrutar de un ambiente familiar y agradable. Contamos con espacios para todo tipo de actividades y eventos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src= "{% static 'AppClub/assets/img/02.png' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Deporte a pleno</h2>
+                            <p>Contamos con escuelas de futbol, natación, tenis, voley y muchas otras disciplinas, además de un gimnasio para musculación con máquinas de última tecnología.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'AppClub/assets/img/03.png' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Vení a conocer nuestro club</h2>
+                            <p>Te invitamos a asociarte y asi poder disfrutar de todo lo que tenemos para ofrecerte.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    {% endblock contenido_principal %}
+
+        <!-- Footer-->
+        <footer class="py-5 bg-black">
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'AppClub/js/scripts.js' %}"></script>
+    </body>
+</html>

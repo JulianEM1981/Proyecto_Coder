@@ -1,0 +1,134 @@
+{% extends 'AppClub/base.html' %} 
+
+{% block header %}
+<header
+  class="masthead"
+  style="
+    background: rgb(149, 0, 255);
+    background: linear-gradient(
+      45deg,
+      rgba(149, 0, 255, 1) 0%,
+      rgba(178, 220, 255, 1) 50%,
+      rgba(26, 255, 233, 1) 100%
+    );
+  "
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          {% if request.user.is_authenticated %} {% if imagen %}
+          <div class="text-center">
+            <img
+              src="{{ imagen }}"
+              class="rounded-circle"
+              style="
+                box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+                  rgba(0, 0, 0, 0.22) 0px 15px 12px;
+              "
+              alt="img-profile"
+              width="300"
+              height="300"
+            />
+          </div>
+          <a
+            href="{% url 'cargar_imagen' %}"
+            class="btn btn-outline-light btn-lg mt-5"
+            >Cambiar foto</a
+          >
+
+          {% else %}
+          <a
+            href="{% url 'cargar_imagen' %}"
+            class="btn btn-outline-light btn-lg mt-5"
+            >Subir Foto
+          </a>
+          {% endif %} {% endif %}
+          <ul
+            class="list-group list-group-flush text-justify"
+            style="margin-top: 2rem"
+          >
+            <li
+              class="list-group-item text-white"
+              style="background-color: transparent"
+            >
+              <b class="text-dark">Usuario:</b>
+              <p style="display: inline; font-size: 2rem">{{user.username}}</p>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li
+              class="list-group-item text-white"
+              style="background-color: transparent"
+            >
+              <b class="text-dark">Bio:</b>
+              <p style="display: inline; font-size: 2rem">
+                {{ user.perfil.bio }}
+              </p>
+            </li>
+            {% endif %}
+            <li
+              class="list-group-item text-white"
+              style="background-color: transparent"
+            >
+              <b class="text-dark">Nombre completo: </b>
+              <p style="display: inline; font-size: 2rem">
+                {{ user.perfil.nombre }} {{ user.perfil.apellido }}
+              </p>
+            </li>
+
+            <li
+              class="list-group-item text-white"
+              style="background-color: transparent"
+            >
+              <b class="text-dark">Email:</b>
+              <p style="display: inline; font-size: 2rem">{{ user.email }}</p>
+            </li>
+            <li
+              class="list-group-item text-white"
+              style="background-color: transparent"
+            >
+              <b class="text-dark">Sitio web:</b>
+              <p style="display: inline; font-size: 2rem">
+                {{ user.perfil.web }}
+              </p>
+            </li>
+          </ul>
+          <a
+            href="{% url 'actualizar_usuario' %}"
+            class="btn btn-outline-light btn-lg mt-5"
+            >Cambiar datos</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock header %} 
+
+{% block contenido_principal %}
+<div class="container text-center">
+  <h2 class=" mt-5"><b>Tus posts</b></h2>
+  <a href="{% url 'nuevo_post' %}" class="btn btn-outline-dark btn-lg">
+    Nuevo
+  </a>
+</div>
+{% for post in posts %}
+<div class="card mb-3 text-center mt-5">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ post.img.url }}" class="card-img" alt="imagen-post" />
+    </div>
+    <div class="col-md-8 text-center">
+      <div class="card-body">
+        <h2 class="card-title">{{ post.titulo }}</h2>
+        <a href="{% url 'post' post.id %}" class="btn btn-dark btn-sm">Ver</a>
+        <p class="card-text mt-0">
+          <small class="text-muted"> {{ post.fecha }} </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %} 
+{% endblock contenido_principal %}

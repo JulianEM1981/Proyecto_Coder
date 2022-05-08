@@ -1,0 +1,47 @@
+{% extends 'AppClub/base.html' %} 
+
+{% block header %}
+
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <br><br><br><br><br><h1 style="word-break: break-word">{{post.titulo}}</h1></br></br></br></br></br>
+        
+          <span class="subheading">Escrito por {{post.autor}} </span>
+          
+          <span class="subheading">{{post.fecha}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock header %} 
+
+{% block contenido_principal %}
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <img class="img-fluid rounded" src="{{post.img.url}}" alt="" />
+      <p style="word-break: break-word">{{post.post|safe}}</p>
+    </div>
+    {% if request.user.is_authenticated %}
+    
+    {% if request.user.id == post.autor.id %}
+    <div class="row text-center mt-5 border-top">
+      <div class="col-md-12 p-2">
+        <button class="btn btn-outline-success">
+          <a href="{% url 'editar_post' post.id%}">Editar post</a>
+        </button>
+        <button class="btn btn-outline-danger">
+          <a href="{% url 'eliminar_posts' post.id%} ">Eliminar post</a>
+        </button>
+      </div>
+    </div>
+  {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endblock contenido_principal %}

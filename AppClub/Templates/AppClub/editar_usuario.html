@@ -1,0 +1,27 @@
+{% extends 'AppClub/base.html' %}
+
+{% block contenido_principal %}
+
+<div class="container text-center">
+
+    
+    {% if errors %}
+        
+        {% for error in errors %}
+            <p style="color:red">{{error}}</p>
+        {% endfor %}
+            
+    {% endif %}
+        
+
+    <form method="post">
+
+        {% csrf_token %}
+
+       <br><br><br><br>{{form.as_p}}</br></br></br></br>
+
+        <input type="submit" value="Actualizar" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock contenido_principal %}
