@@ -1,9 +1,9 @@
 Proyecto Final | Curso Python CoderHouse
 
-Clonar el proyecto.
+1. Clonar el proyecto.
 
-Instalar las dependencias del proyecto: pip install django.
+2. Instalar las dependencias del proyecto: pip install django.
 
-Crear las migraciones ejecutando python manage.py makemigrations y luego python manage.py migrate.
+3. Crear las migraciones ejecutando python manage.py makemigrations y luego python manage.py migrate.
 
-Correr la aplicacion con python manage.py runserver.
+4. Correr la aplicacion con python manage.py runserver.
